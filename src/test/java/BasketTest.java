@@ -24,6 +24,11 @@ public class BasketTest {
 
     @Test
     public void totalStartsAt0() {
-        assertEquals(0.0, basket.getTotal(), 0.01);
+        assertEquals(0.0, basket.getTotal(), 0.1);
+    }
+
+    @Test
+    public void productsStartEmpty() {
+        assertEquals(0, basket.getNumberOfProducts());
     }
 }

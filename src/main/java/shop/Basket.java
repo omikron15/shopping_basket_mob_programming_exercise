@@ -17,4 +17,8 @@ public class Basket {
     public double getTotal() {
         return total;
     }
+
+    public int getNumberOfProducts() {
+        return products.size();
+    }
 }
