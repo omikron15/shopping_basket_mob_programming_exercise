@@ -11,6 +11,7 @@ public class BasketTest {
 
     Basket basket;
     Food food;
+    Food foodTwo;
     LoyaltyCard loyaltyCard;
     Customer customer;
 
@@ -19,6 +20,7 @@ public class BasketTest {
         loyaltyCard = new LoyaltyCard();
         customer = new Customer();
         food = new Food("Doughnut", 0.80);
+        foodTwo = new Food("Doughnut", 0.80);
         basket = new Basket();
     }
 
@@ -58,6 +60,15 @@ public class BasketTest {
         basket.addProduct(food);
         basket.calculateTotal();
         assertEquals(0.80, basket.getTotal(), 0.01);
+    }
+
+
+    @Test
+    public void canGetTotalAfterBOGOFDiscount() {
+        basket.addProduct(food);
+        basket.addProduct(foodTwo);
+        basket.addProduct(food);
+        assertEquals(1.60, basket.bogofDiscount(basket.getTotal()), 0.01);
     }
 
 }
