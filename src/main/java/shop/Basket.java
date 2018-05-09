@@ -1,6 +1,8 @@
 package shop;
 
+import customers.Customer;
 import products.Product;
+import sun.java2d.loops.CustomComponent;
 
 import java.util.ArrayList;
 
@@ -8,10 +10,12 @@ public class Basket {
 
     private double total;
     private ArrayList<Product> products;
+    private Customer customer;
 
-    public Basket() {
+    public Basket(Customer customer) {
         this.total = 0.0;
         this.products = new ArrayList<>();
+        this.customer = customer;
     }
 
     public double getTotal() {
@@ -24,7 +28,7 @@ public class Basket {
 
     public void addProduct(Product product) {
         this.products.add(product);
-        calculateTotal();
+
     }
 
     public void removeProduct(Product product) {
@@ -44,8 +48,29 @@ public class Basket {
             runningTotal += product.getPrice();
         }
 
+        runningTotal = bogofDiscount(runningTotal);
+        runningTotal = tenPercentDiscount(runningTotal);
+        runningTotal = twoPercentLoyaltyDiscount(runningTotal, this.customer);
+
         this.total = runningTotal;
+
     }
+
+    public double tenPercentDiscount(double runningTotal){
+        if(runningTotal > 20.00){
+            runningTotal *= 0.9;
+        }
+        return runningTotal;
+    }
+
+    public double twoPercentLoyaltyDiscount(double runningTotal, Customer customer){
+        if (customer.hasLoyaltyCard()){
+            runningTotal *= 0.98;
+        }
+        return runningTotal;
+    }
+
+
 
     public double bogofDiscount(double runningTotal) {
         ArrayList<Product> copyOfProducts = new ArrayList<>(products);

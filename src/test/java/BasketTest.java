@@ -10,18 +10,28 @@ import static org.junit.Assert.assertEquals;
 public class BasketTest {
 
     Basket basket;
+    Basket basket2;
     Food food;
     Food foodTwo;
+    Food food3;
+    Food food4;
     LoyaltyCard loyaltyCard;
     Customer customer;
+    Customer customer2;
 
     @Before
     public void before() {
         loyaltyCard = new LoyaltyCard();
         customer = new Customer();
+        customer2 = new Customer();
+        customer.addLoyaltyCard(loyaltyCard);
+
         food = new Food("Doughnut", 0.80);
         foodTwo = new Food("Doughnut", 0.80);
-        basket = new Basket();
+        food3 = new Food("Doughnut", 100.00);
+        food4 = new Food("Doughnut", 20);
+        basket = new Basket(customer);
+        basket2 = new Basket(customer2);
     }
 
     @Test
@@ -57,9 +67,9 @@ public class BasketTest {
 
     @Test
     public void canGetUpdatedTotal() {
-        basket.addProduct(food);
-        basket.calculateTotal();
-        assertEquals(0.80, basket.getTotal(), 0.01);
+        basket2.addProduct(food);
+        basket2.calculateTotal();
+        assertEquals(0.8, basket2.getTotal(), 0.01);
     }
 
 
@@ -69,6 +79,51 @@ public class BasketTest {
         basket.addProduct(foodTwo);
         basket.addProduct(food);
         assertEquals(1.60, basket.bogofDiscount(basket.getTotal()), 0.01);
+    }
+
+    @Test
+    public void canGetTenPercentOff() {
+        basket2.addProduct(food3);
+        basket2.calculateTotal();
+        assertEquals(90.00, basket2.getTotal(), 0.01);
+    }
+
+    @Test
+    public void canGetTwoPercentOff__withLoyaltyCard() {
+        basket.addProduct(food4);
+        basket.calculateTotal();
+        assertEquals(19.60, basket.getTotal(), 0.01);
+    }
+
+    @Test
+    public void canGetTwoPercentOff__noLoyaltyCard() {
+        basket2.addProduct(food4);
+        basket2.calculateTotal();
+        assertEquals(20.00, basket2.getTotal(), 0.01);
+    }
+
+    @Test
+    public void BigTest() {
+        basket.addProduct(food3);
+        basket.calculateTotal();
+        assertEquals(88.20, basket.getTotal(), 0.1);
+    }
+
+    @Test
+    public void BigTest2() {
+        basket.addProduct(food3);
+        basket.addProduct(food3);
+        basket.calculateTotal();
+        assertEquals(88.20, basket.getTotal(), 0.1);
+    }
+
+    @Test
+    public void BigTest3() {
+        basket.addProduct(food3);
+        basket.addProduct(food3);
+        basket.addProduct(food3);
+        basket.calculateTotal();
+        assertEquals(176.4, basket.getTotal(), 0.1);
     }
 
 }
