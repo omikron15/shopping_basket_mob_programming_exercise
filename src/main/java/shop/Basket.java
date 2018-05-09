@@ -21,4 +21,8 @@ public class Basket {
     public int getNumberOfProducts() {
         return products.size();
     }
+
+    public void addProduct(Product product) {
+        this.products.add(product);
+    }
 }

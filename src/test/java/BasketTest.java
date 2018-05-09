@@ -31,4 +31,10 @@ public class BasketTest {
     public void productsStartEmpty() {
         assertEquals(0, basket.getNumberOfProducts());
     }
+
+    @Test
+    public void canAddProduct() {
+        basket.addProduct(food);
+        assertEquals(1, basket.getNumberOfProducts());
+    }
 }
