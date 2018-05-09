@@ -33,4 +33,14 @@ public class Basket {
     public void clearBasket() {
         this.products.clear();
     }
+
+    public void calculateTotal() {
+        double runningTotal = 0.0;
+
+        for (Product product : this.products) {
+            runningTotal += product.getPrice();
+        }
+
+        this.total = runningTotal;
+    }
 }

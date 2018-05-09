@@ -52,4 +52,11 @@ public class BasketTest {
         basket.clearBasket();
         assertEquals(0, basket.getNumberOfProducts());
     }
+
+    @Test
+    public void canGetUpdatedTotal() {
+        basket.addProduct(food);
+        basket.calculateTotal();
+        assertEquals(0.80, basket.getTotal(), 0.01);
+    }
 }
