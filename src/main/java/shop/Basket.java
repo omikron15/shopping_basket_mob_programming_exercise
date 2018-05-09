@@ -24,14 +24,17 @@ public class Basket {
 
     public void addProduct(Product product) {
         this.products.add(product);
+        calculateTotal();
     }
 
     public void removeProduct(Product product) {
         this.products.remove(product);
+        calculateTotal();
     }
 
     public void clearBasket() {
         this.products.clear();
+        calculateTotal();
     }
 
     public void calculateTotal() {

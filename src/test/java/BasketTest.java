@@ -59,4 +59,5 @@ public class BasketTest {
         basket.calculateTotal();
         assertEquals(0.80, basket.getTotal(), 0.01);
     }
+
 }
