@@ -17,4 +17,9 @@ public class FoodTest {
     public void canGetName() {
         assertEquals("Doughnut", food.getName());
     }
+
+    @Test
+    public void canGetPrice() {
+        assertEquals(0.80, food.getPrice(), 0.01);
+    }
 }
