@@ -13,4 +13,8 @@ public class Customer {
     public boolean hasLoyaltyCard() {
         return (loyaltyCard.size() > 0);
     }
+
+    public void addLoyaltyCard(LoyaltyCard loyaltyCard) {
+        this.loyaltyCard.add(loyaltyCard);
+    }
 }

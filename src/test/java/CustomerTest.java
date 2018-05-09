@@ -20,4 +20,10 @@ public class CustomerTest {
     public void startsWithoutLoyaltyCard() {
         assertEquals(false, customer.hasLoyaltyCard());
     }
+
+    @Test
+    public void canAddLoyaltyCard() {
+        customer.addLoyaltyCard(loyaltyCard);
+        assertEquals(true, customer.hasLoyaltyCard());
+    }
 }
