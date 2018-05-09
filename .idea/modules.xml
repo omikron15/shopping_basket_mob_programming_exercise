@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ShoppingBasketMobProgramming.iml" filepath="$PROJECT_DIR$/.idea/modules/ShoppingBasketMobProgramming.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ShoppingBasketMobProgramming_main.iml" filepath="$PROJECT_DIR$/.idea/modules/ShoppingBasketMobProgramming_main.iml" group="ShoppingBasketMobProgramming" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ShoppingBasketMobProgramming_test.iml" filepath="$PROJECT_DIR$/.idea/modules/ShoppingBasketMobProgramming_test.iml" group="ShoppingBasketMobProgramming" />
     </modules>
   </component>
 </project>
