@@ -22,4 +22,10 @@ public class FoodTest {
     public void canGetPrice() {
         assertEquals(0.80, food.getPrice(), 0.01);
     }
+
+    @Test
+    public void canSetPrice() {
+        food.setPrice(1.00);
+        assertEquals(1.00, food.getPrice(), 0.01);
+    }
 }
